@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THRUSTED - Launch Your Career</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for easy theme management */
+        :root {
+            --primary-dark: #0F172A;
+            --primary-accent: #F97316;
+            --primary-accent-hover: #FB923C;
+            --text-light: #F1F5F9;
+            --text-dark: #334155;
+            --bg-light: #FFFFFF;
+            --bg-neutral: #F8FAFC;
+            --border-color: #E2E8F0;
+        }
+
+        /* Basic Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* LOGO STYLING - Replace with your img tag */
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+        .logo span {
+            color: var(--primary-accent);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-accent);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-accent-hover);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+            color: var(--text-dark);
+        }
+
+        /* Plans Section */
+        #plans {
+            background-color: var(--bg-neutral);
+        }
+        
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .plan-card {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Highlighted Plan */
+        .plan-card.highlighted {
+            border: 2px solid var(--primary-accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-ribbon {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--primary-accent);
+            color: white;
+            padding: 5px 30px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+
+        .plan-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .plan-price .ctc {
+            color: var(--primary-accent);
+            font-weight: 700;
+            display: block;
+            margin-top: 0.5rem;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin: 1.5rem 0;
+            flex-grow: 1;
+        }
+        
+        .plan-features li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .plan-features li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+        }
+        
+        .plan-card .btn {
+            width: 100%;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simplification for this example. A real site would use a hamburger menu */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="container navbar">
+            <a href="#" class="logo">THR<span>U</span>STED</a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#plans">Our Plans</a></li>
+                <li><a href="#footer">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Stop Searching. Start Getting Hired.</h1>
+                <p>With guaranteed interview calls and expert guidance, our proven system helps you land your dream job faster. We manage the search, so you can focus on success.</p>
+                <a href="#plans" class="btn">Explore Our Plans</a>
+            </div>
+        </section>
+
+        <section id="plans">
+            <div class="container">
+                <h2 class="section-title">Find the Perfect Plan to Fuel Your Career</h2>
+                <p class="section-subtitle">Transparent pricing with a plan for every stage of your job search. All upfront payments are adjusted in your final CTC settlement.</p>
+                
+                <div class="plans-grid">
+                    <div class="plan-card">
+                        <h3>Free Plan</h3>
+                        <div class="plan-price">₹99 <small>(one-time)</small><span class="ctc">CTC %: 0%</span></div>
+                        <ul class="plan-features">
+                            <li>1 professional resume</li>
+                            <li>ATS-friendly keywords</li>
+                            <li>PDF & Word copy</li>
+                        </ul>
+                        <a href="#" class="btn">Get Started</a>
+                    </div>
+
+                    <div class="plan-card">
+                        <h3>Basic Plan</h3>
+                        <div class="plan-price">from ₹6,000 <small>/ 1m</small><span class="ctc">CTC %: 0%</span></div>
+                        <ul class="plan-features">
+                            <li>Naukri profile setup & handling</li>
+                            <li>Resume alignment with keywords</li>
+                            <li>LinkedIn profile optimization</li>
+                            <li>Weekly performance report</li>
+                        </ul>
+                        <a href="#" class="btn">Choose Plan</a>
+                    </div>
+                    
+                    <div class="plan-card highlighted">
+                        <div class="highlight-ribbon">Most Popular</div>
+                        <h3>Basic Plus Plan</h3>
+                        <div class="plan-price">from ₹10,000 <small>/ 1m</small><span class="ctc">CTC %: 0%</span></div>
+                        <ul class="plan-features">
+                            <li>We apply on your behalf</li>
+                            <li>Full LinkedIn management</li>
+                            <li>One-on-one guidance</li>
+                            <li>Referrals for applicable jobs</li>
+                            <li>Salary negotiation techniques</li>
+                            <li><b>Getting calls is our Guarantee</b></li>
+                        </ul>
+                        <a href="#" class="btn">Choose Plan</a>
+                    </div>
+                    
+                    <div class="plan-card">
+                        <h3>Pro Plan</h3>
+                        <div class="plan-price">from ₹10,000 <small>/ 1m</small><span class="ctc">CTC %: 10%</span></div>
+                        <ul class="plan-features">
+                            <li>Structured training modules</li>
+                            <li>Personalized job search strategy</li>
+                            <li>Mock HR Q&A frameworks</li>
+                            <li>Career branding support</li>
+                        </ul>
+                        <a href="#" class="btn">Choose Plan</a>
+                    </div>
+                    
+                    <div class="plan-card">
+                        <h3>Pro Plus Plan</h3>
+                        <div class="plan-price">from ₹15,000 <small>/ 1m</small><span class="ctc">CTC %: 20%</span></div>
+                        <ul class="plan-features">
+                            <li>Advanced job search training</li>
+                            <li>Direct referrals to recruiters</li>
+                            <li>Salary negotiation coaching</li>
+                            <li>Mock HR interview prep</li>
+                        </ul>
+                        <a href="#" class="btn">Choose Plan</a>
+                    </div>
+                    
+                    <div class="plan-card">
+                        <h3>Premium Plan</h3>
+                        <div class="plan-price">from ₹15,000 <small>/ 1m</small><span class="ctc">CTC %: 10%</span></div>
+                        <ul class="plan-features">
+                            <li>Technical + HR interview prep</li>
+                            <li>Multiple mock interviews</li>
+                            <li>Personalized improvement roadmap</li>
+                            <li>Confidence coaching</li>
+                        </ul>
+                        <a href="#" class="btn">Choose Plan</a>
+                    </div>
+                    
+                    <div class="plan-card">
+                        <h3>Premium Plus Plan</h3>
+                        <div class="plan-price">from ₹20,000 <small>/ 1m</small><span class="ctc">CTC %: 20%</span></div>
+                        <ul class="plan-features">
+                            <li>Full interview preparation</li>
+                            <li>Direct job referrals</li>
+                            <li>Salary negotiation coaching</li>
+                            <li>Mock interviews with expert feedback</li>
+                            <li>End-to-end job support</li>
+                        </ul>
+                        <a href="#" class="btn">Choose Plan</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer" class="footer">
+        <div class="container">
+            <p>&copy; 2025 THRUSTED. All Rights Reserved.</p>
+            <p>Your Career Launchpad.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
